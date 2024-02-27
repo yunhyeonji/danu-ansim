@@ -1,14 +1,10 @@
 import React, {useRef, useEffect, useState} from 'react';
 import {WebView} from 'react-native-webview';
 import {Button, StyleSheet, View} from 'react-native';
-import {Accelerometer} from 'react-native-sensors';
 import ShakeComponent from '../func/shaking';
-// import * as Notifications from 'expo-notifications';
 
 export default function DanuView({route, navigation}) {
   const webViewRef = useRef(null);
-  const [shakeCount, setShakeCount] = useState(0);
-  const [newCount, setNewCount] = useState(0);
 
   // 전화번호부 선택 이벤트 처리
   useEffect(() => {
