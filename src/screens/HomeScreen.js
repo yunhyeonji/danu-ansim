@@ -10,6 +10,12 @@ const HomeScreen = ({navigation}) => {
           navigation.navigate('danu');
         }}
       />
+      <Button
+        title="플래시"
+        onPress={() => {
+          navigation.navigate('Flash');
+        }}
+      />
     </View>
   );
 };

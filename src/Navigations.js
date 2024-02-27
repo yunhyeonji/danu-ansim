@@ -1,8 +1,10 @@
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import ContactScreen from './screens/ContactScreen';
-import React from 'react';
+import CameraScreen from './screens/CameraScreen';
+import Flash from './func/flash';
 import DanuView from './webapp/DanuView';
 import DanusysHomepage from './webapp/DanusysHomepage';
 
@@ -34,6 +36,20 @@ const Navigations = () => {
           component={ContactScreen}
           options={{
             title: `연락처 목록`,
+          }}
+        />
+        <Stack.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{
+            title: `카메라`,
+          }}
+        />
+        <Stack.Screen
+          name="Flash"
+          component={Flash}
+          options={{
+            title: `플래시`,
           }}
         />
         <Stack.Screen

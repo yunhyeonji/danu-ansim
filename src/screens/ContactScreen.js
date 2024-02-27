@@ -62,7 +62,7 @@ class ContactList extends React.Component {
   };
 
   renderItem = ({item}) => (
-    <View style={styles.itemContainer}>
+    <View key={item.id} style={styles.itemContainer}>
       <TouchableOpacity
         onPress={() => {
           handleCall(item.phoneNumbers[0].number);
