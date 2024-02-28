@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import ContactScreen from './screens/ContactScreen';
 import CameraScreen from './screens/CameraScreen';
-import Flash from './func/flash';
+import SoundPlayer from './func/sound';
 import DanuView from './webapp/DanuView';
 import DanusysHomepage from './webapp/DanusysHomepage';
 
@@ -39,17 +39,17 @@ const Navigations = () => {
           }}
         />
         <Stack.Screen
-          name="Camera"
+          name="camera"
           component={CameraScreen}
           options={{
             title: `카메라`,
           }}
         />
         <Stack.Screen
-          name="Flash"
-          component={Flash}
+          name="fakeCall"
+          component={SoundPlayer}
           options={{
-            title: `플래시`,
+            title: `테스트부분`,
           }}
         />
         <Stack.Screen

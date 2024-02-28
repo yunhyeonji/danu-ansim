@@ -3,10 +3,12 @@ import {WebView} from 'react-native-webview';
 import {Button, StyleSheet, View} from 'react-native';
 import ShakeComponent from '../func/shaking';
 import Flash from '../func/flash';
+import SoundPlayer from '../func/sound';
 
 export default function DanuView({route, navigation}) {
   const webViewRef = useRef(null);
   const [torch, setTorch] = useState(false);
+  const [soundOn, setSoundOn] = useState(false);
 
   // 전화번호부 선택 이벤트 처리
   useEffect(() => {
@@ -28,11 +30,12 @@ export default function DanuView({route, navigation}) {
 
   // 웹뷰에서 이벤트 받기
   const onWebviewMessage = e => {
-    console.log(e);
     let data = e.nativeEvent.data.split(',');
     if (data[0] === 'N') {
       if (data[1] === 'SOS') {
         setTorch(!torch);
+      } else if (data[1] === 'fakeCall') {
+        setSoundOn(!soundOn);
       }
     } else {
       navigation.navigate(data[1]);
@@ -48,6 +51,7 @@ export default function DanuView({route, navigation}) {
     <View style={{flex: 1}}>
       <ShakeComponent webViewRef={webViewRef} setTorch={setTorch} />
       <Flash torch={torch} />
+      <SoundPlayer soundOn={soundOn} />
       <Button
         title="앱단에서 이벤트보내기"
         onPress={() => postWebviewMessage('네이티브에서 이벤트 보냅니다.')}
