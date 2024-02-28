@@ -1,7 +1,7 @@
 import {accelerometer} from 'react-native-sensors';
 import {useEffect, useState} from 'react';
 
-const ShakeComponent = ({webViewRef}) => {
+const ShakeComponent = ({webViewRef, setTorch}) => {
   const [shakeCount, setShakeCount] = useState(0);
   const [newCount, setNewCount] = useState(0);
 
@@ -15,7 +15,7 @@ const ShakeComponent = ({webViewRef}) => {
       const acceleration = Math.sqrt(x * x + y * y + z * z);
 
       // 흔들기 감지 기준에 따라 조정 (임의의 값, 필요에 따라 조정)
-      if (acceleration > 50) {
+      if (acceleration > 60) {
         console.log('x, y, z, timestamp: ', x, y, z, timestamp, acceleration);
         setShakeCount(prevCount => {
           const updatedCount = prevCount + 1;
@@ -24,6 +24,7 @@ const ShakeComponent = ({webViewRef}) => {
             postWebviewMessage('흔들기를 감지했습니다.');
             console.log('기기가 흔들렸습니다!', updatedCount);
             setNewCount(0); // 5번 흔들면 카운트를 리셋
+            setTorch(true);
             return 0;
           }
 
