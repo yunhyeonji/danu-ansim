@@ -83,7 +83,7 @@ class ContactList extends React.Component {
           data={this.state.contacts}
           renderItem={this.renderItem}
           numColumns={1}
-          keyExtractor={(item, index) => index}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     );

@@ -31,6 +31,7 @@ export default function DanuView({route, navigation}) {
   // 웹뷰에서 이벤트 받기
   const onWebviewMessage = e => {
     let data = e.nativeEvent.data.split(',');
+    console.log(data);
     if (data[0] === 'N') {
       if (data[1] === 'SOS') {
         setTorch(!torch);
