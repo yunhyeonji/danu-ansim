@@ -21,10 +21,13 @@ const ShakeComponent = ({webViewRef, setTorch}) => {
           const updatedCount = prevCount + 1;
 
           if (updatedCount >= 5) {
-            postWebviewMessage('흔들기를 감지했습니다.');
+            postWebviewMessage(
+              JSON.stringify({
+                sos: '기기를 흔들어 위급상황을 호출하였습니다.',
+              }),
+            );
             console.log('기기가 흔들렸습니다!', updatedCount);
             setNewCount(0); // 5번 흔들면 카운트를 리셋
-            setTorch(true);
             return 0;
           }
 

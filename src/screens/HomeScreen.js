@@ -1,7 +1,6 @@
-import {Button, TouchableOpacity, Text, View, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
-  // console.log({ navigation });
   return (
     <View style={styles.container}>
       <TouchableOpacity
