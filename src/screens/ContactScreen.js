@@ -41,8 +41,8 @@ class ContactList extends React.Component {
   componentDidMount() {
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-        title: 'Contacts',
-        message: ' This app would like to see your contacts',
+        title: '연락처',
+        message: '연락처에 접근할 수 있도록 권한을 요청합니다.',
       }).then(() => {
         this.getList();
       });
@@ -61,8 +61,8 @@ class ContactList extends React.Component {
       });
   };
 
-  renderItem = ({item}) => (
-    <View key={item.id} style={styles.itemContainer}>
+  renderItem = ({item, index}) => (
+    <View key={index} style={styles.itemContainer}>
       <TouchableOpacity
         onPress={() => {
           handleCall(item.phoneNumbers[0].number);

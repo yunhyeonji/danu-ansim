@@ -6,7 +6,6 @@ import ContactScreen from './screens/ContactScreen';
 import CameraScreen from './screens/CameraScreen';
 import SoundPlayer from './func/sound';
 import DanuView from './webapp/DanuView';
-import DanusysHomepage from './webapp/DanusysHomepage';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,12 +18,9 @@ const Navigations = () => {
           name="Home"
           component={HomeScreen}
           options={{
-            title: '홈',
-            // Header 블록에 대한 스타일
-            headerStyle: {backgroundColor: '#29b6f6'},
-            //Header의 텍스트, 버튼들 색상
-            headerTintColor: '#fff',
-            //타이틀 텍스트 스타일
+            title: 'MAIN',
+            headerStyle: {backgroundColor: '#fff'},
+            headerTintColor: '#000000',
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 20,
@@ -59,13 +55,6 @@ const Navigations = () => {
             title: `다누시스 웹앱 테스트`,
             backgroundColor: route.params?.backgroundColor,
           })}
-        />
-        <Stack.Screen
-          name="Danu"
-          component={DanusysHomepage}
-          options={{
-            title: `다누시스 홈페이지`,
-          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -6,6 +6,7 @@ import {
   View,
   NativeEventEmitter,
   NativeModules,
+  Linking,
 } from 'react-native';
 import ShakeComponent from '../func/shaking';
 import Flash from '../func/flash';
@@ -49,6 +50,16 @@ export default function DanuView({route, navigation}) {
     }
   }, [route.params?.photoURL]);
 
+  //웹뷰에서 새창열기 시도 시
+  const handleShouldStartLoadWithRequest = request => {
+    // 외부 링크에 대한 조건을 확인하고, 해당하는 경우 외부 브라우저에서 링크를 엽니다.
+    if (request.url.startsWith('http://www.danusys.com/')) {
+      Linking.openURL(request.url);
+      return false; // WebView에서는 페이지를 로드하지 않음
+    }
+    return true; // WebView 내에서 로드를 계속함
+  };
+
   // 웹뷰에서 이벤트 받기
   const onWebviewMessage = e => {
     let data = e.nativeEvent.data.split(',');
@@ -83,6 +94,7 @@ export default function DanuView({route, navigation}) {
         style={styles.container}
         // source={{uri: 'http://reactwebapp.dothome.co.kr/webapp/'}}
         source={{uri: 'http://172.20.14.69:3000/webapp/'}}
+        onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
         onMessage={onWebviewMessage}
       />
     </View>
