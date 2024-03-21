@@ -1,7 +1,6 @@
 import React, {useRef, useEffect, useState} from 'react';
 import {WebView} from 'react-native-webview';
 import {
-  Button,
   StyleSheet,
   View,
   NativeEventEmitter,
@@ -85,15 +84,11 @@ export default function DanuView({route, navigation}) {
       <ShakeComponent webViewRef={webViewRef} setTorch={setTorch} />
       <Flash torch={torch} />
       <SoundPlayer soundOn={soundOn} />
-      <Button
-        title="앱단에서 이벤트보내기"
-        onPress={() => postWebviewMessage('네이티브에서 이벤트 보냅니다.')}
-      />
       <WebView
         ref={webViewRef}
         style={styles.container}
-        // source={{uri: 'http://reactwebapp.dothome.co.kr/webapp/'}}
-        source={{uri: 'http://172.20.14.69:3000/webapp/'}}
+        source={{uri: 'http://reactwebapp.dothome.co.kr/webapp/'}}
+        // source={{uri: 'http://172.20.14.69:3000/webapp/'}}
         onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
         onMessage={onWebviewMessage}
       />
